@@ -1,0 +1,16 @@
+.restaurant{
+    background-color:rgb(236, 197, 67);
+    color:white;
+    font-size: 130%;
+    margin:5px;
+  }
+  ion-content{
+    --background: transparent !important;
+}
+ion-title {
+  font-size: 15px;
+  font-weight: bold;
+}
+ion-modal {
+  --height: 100%;
+}

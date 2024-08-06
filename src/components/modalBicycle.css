@@ -1,0 +1,10 @@
+
+  ion-content{
+    --background: transparent !important;
+}
+.bicycle{
+  background-color:rgb(51, 177, 1);
+  color:white;
+  font-size: 150%;
+  margin:5px;
+}

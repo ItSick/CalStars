@@ -1,0 +1,10 @@
+
+ion-content{
+    --background: transparent !important;
+}
+.pint{
+  background-color:rgb(57, 70, 189);
+  color:white;
+  font-size: 140%;
+  margin:5px;
+}

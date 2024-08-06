@@ -1,0 +1,9 @@
+.chatbubble{
+  background-color:rgb(141, 144, 168);
+  color:white;
+  font-size: 150%;
+  margin:5px;
+  }
+  ion-content{
+    --background: transparent !important;
+}

@@ -1,0 +1,9 @@
+.disc{
+  background-color:rgb(177, 97, 209);
+  color:white;
+  font-size: 150%;
+  margin:5px;
+}
+  ion-content{
+    --background: transparent !important;
+}

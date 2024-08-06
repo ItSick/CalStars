@@ -1,0 +1,19 @@
+.block {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* ion-modal{
+    --height: auto;
+  } */
+  .open-modal-btn {
+    background-color:white;
+    color:yellow;
+    border: 1px solid yellow;
+    border-radius: 10px;
+    height: 30px;
+    width: 50px;
+  }

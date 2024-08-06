@@ -1,0 +1,58 @@
+
+.container-actions {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 33%;
+    transform: translateY(-50%);
+}
+.some-page-wrapper-icon {
+    margin-top: 20px;
+  }
+  .row-icon, .days-row-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap; /* Change this to nowrap to avoid wrapping in the swiper */
+    width: 100%;
+    overflow-x: auto; /* Allows scrolling horizontally if not using Swiper */
+  }
+  
+  .column-actions {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+  }
+   .restaurant{
+    background-color:rgb(236, 197, 67);
+    color:white;
+    font-size: 130%;
+    margin:5px;
+  }
+  .bicycle{
+    background-color:rgb(51, 177, 1);
+    color:white;
+    font-size: 150%;
+    margin:5px;
+  }
+  .pint{
+    background-color:rgb(57, 70, 189);
+    color:white;
+    font-size: 140%;
+    margin:5px;
+  } 
+   .chatbubble{
+    background-color:rgb(141, 144, 168);
+    color:white;
+    font-size: 150%;
+    margin:5px;
+  } 
+   .disc{
+    background-color:rgb(177, 97, 209);
+    color:white;
+    font-size: 150%;
+    margin:5px;
+  } 

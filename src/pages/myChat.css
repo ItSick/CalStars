@@ -1,0 +1,27 @@
+ion-searchbar.custom {
+    --border-radius: 10px;
+    direction:ltr;
+    padding: 0 0 0 5px;
+  }
+.restaurant{
+    background-color:rgb(236, 197, 67);
+    color:white;
+    font-size: 130%;
+    margin:5px;
+  }
+  ion-content{
+    --background: transparent !important;
+}
+ion-title {
+  font-size: 15px;
+  font-weight: bold;
+}
+.item-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: row; 
+  padding: 10px 5px 5px 5px;
+}
+.searchbar-input.sc-ion-searchbar-md{
+  font-size:14px;
+}
