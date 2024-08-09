@@ -64,7 +64,7 @@ function MyActivity() {
           <IonContent>
             <div className='item-div'>
                 <IonSearchbar className="custom" showClearButton="focus" placeholder="חיפוש וסינון"></IonSearchbar>
-                <TimeModal></TimeModal>
+                <TimeModal name='active' />
                 <IonButton style={{backgroundColor:"white",color:"yellow", border:"1px solid yellow",borderRadius:"10px", height:"30px"}} strong={true} onClick={handleOpenPicker}>
                   הוסף חדש
                 </IonButton>

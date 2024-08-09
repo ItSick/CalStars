@@ -5,10 +5,30 @@ const userActivities = {
                 "name": "restaurant",
                 "date":"31.7.2024 08:16",
                 "data": {
-                    "foodName": "קוטג",
-                    "quantity": "1",
-                    "redStars": "0",
+                    "foodName": "סלט ירקות טריים",
+                    "quantity": "1 מנות",
+                    "redStars": "",
                     "yellowStars": "2.5"
+                }
+            },
+            {
+                "name": "restaurant",
+                "date":"31.7.2024 08:16",
+                "data": {
+                    "foodName": "גבינה צהובה",
+                    "quantity": "1 פרוסה",
+                    "redStars": "1",
+                    "yellowStars": "1.5"
+                }
+            },
+            {
+                "name": "restaurant",
+                "date":"31.7.2024 08:16",
+                "data": {
+                    "foodName": "נוטלה",
+                    "quantity": "1 כפית",
+                    "redStars": "1",
+                    "yellowStars": ""
                 }
             },
             {

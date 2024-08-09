@@ -24,4 +24,6 @@ ion-title {
 }
 .searchbar-input.sc-ion-searchbar-md{
   font-size:14px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
 }
