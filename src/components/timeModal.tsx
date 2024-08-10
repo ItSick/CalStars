@@ -4,16 +4,20 @@ import { IonButton, IonModal, IonHeader, IonContent, IonToolbar, IonTitle, IonPa
 import './timeModal.css';
 import { format } from 'date-fns/format';
 
-function TimeModal() {
+interface Props{
+    name: string;
+}
+
+function TimeModal({ name }: Props) {
     const modal = useRef<HTMLIonModalElement>(null);
     const [selectedTime, setSelectedTime] = useState(format(new Date(), "HH:mm"));
 
     return (
         <div>
-            <IonButton id="open-modal" expand="block" className="open-modal-btn" strong={true} onClick={() => confirm()}>
+            <IonButton id={`open-modal-${name}`} expand="block" className="open-modal-btn" strong={true}>
                 {selectedTime}
             </IonButton> 
-            <IonModal  style={{ '--height': 'auto' }}  ref={modal} trigger="open-modal" initialBreakpoint={1} breakpoints={[0, 1]}>
+            <IonModal  style={{ '--height': 'auto' }}  ref={modal} trigger={`open-modal-${name}`} initialBreakpoint={1} breakpoints={[0, 1]}>
                 <div className="block">
                 <IonDatetime 
                     presentation="time" 
@@ -21,10 +25,10 @@ function TimeModal() {
                     onIonChange={e => {
                         const value = e.detail.value;
                         if (typeof value === 'string') {
-                          setSelectedTime(value);
-                          console.log(value)
+                            setSelectedTime(value);
+                            console.log(value)
                         }
-                      }}
+                    }}
                     />
                 </div>
             </IonModal>

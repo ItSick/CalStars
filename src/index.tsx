@@ -5,6 +5,8 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import i18n from './i18n/i18n';
 import { I18nextProvider } from 'react-i18next';
+import {Provider} from "react-redux";
+import store from "./context/redux/store";
 
 
 const container = document.getElementById('root');
@@ -12,9 +14,11 @@ const container = document.getElementById('root');
 const root = createRoot(container!);
 root.render(
   <I18nextProvider i18n={i18n}>
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>
   </I18nextProvider>
 );
 
