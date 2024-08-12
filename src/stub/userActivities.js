@@ -1,5 +1,7 @@
 const userActivities = {
     "user": {
+        "id":1,
+        "name":"itsik",
         "activities": [
             {
                 "name": "restaurant",

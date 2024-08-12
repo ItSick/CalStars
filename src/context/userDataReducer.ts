@@ -1,7 +1,6 @@
 // userDataReducer.ts
 
-import { ADD_USER_DATA, GET_USER_DATA, UPDATE_USER_DATA } from './actionTypes';
-import userActivities from '../stub/userActivities';
+import { CREATE_USER_DATA, GET_USER_DATA, GET_USER_DATA_FAILURE, GET_USER_DATA_SUCCESS, UPDATE_USER_DATA } from './actionTypes';
 
 
 export interface RestaurantActivityData {
@@ -42,40 +41,66 @@ export interface Activity {
   date: string;
   data: ActivityData;
 }
+export interface User {
+  id: number;
+  name: string;
+  activities: Activity[];
+}
 
 export interface State {
-  data: Activity[];
+  user: User | null;
+  loading: boolean;
+  error: string | null;
 }
 
 const initialState: State = {
-  data: [],
+  user: null,
+  loading: false,
+  error: null,
 };
 
 const userDataReducer = (state = initialState, action: any): State => {
   switch (action.type) {
-    case ADD_USER_DATA:
+    case CREATE_USER_DATA:
       return {
         ...state,
-        data: [...state.data, action.payload],
+        user: state.user,
       };
 
     case UPDATE_USER_DATA:
       return {
         ...state,
-        data: state.data.map(activity =>
-          activity.name === action.payload.name && activity.date === action.payload.date
-            ? action.payload
-            : activity
-        ),
+        user: state.user
+        // user: state.user?.activities.map(activity =>
+        //   activity.name === action.payload.name && activity.date === action.payload.date
+        //     ? action.payload
+        //     : activity
+        // ),
       };
 
     case GET_USER_DATA:
-        console.log("user on Get",userActivities.user.activities)
+      console.log('GET_USER_DATA action', action)
       return {
         ...state,
-        data: userActivities.user.activities,
+        loading: true,
+        user: action.payload,
       };
 
+    case GET_USER_DATA_SUCCESS:
+      console.log('GET_USER_DATA_SUCCESS', action)
+      return {
+        ...state,
+        loading: false,
+        user: action.payload,
+      };
+
+    case GET_USER_DATA_FAILURE:
+      console.error('GET_USER_DATA_SUCCESS', action)
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }

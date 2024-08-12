@@ -41,7 +41,7 @@ function modalRestaurant() {
             yellowStars
         }
     };
-    debugger
+    
     // save to database with api
     userActivities.user.activities.push(newActivity);
   }

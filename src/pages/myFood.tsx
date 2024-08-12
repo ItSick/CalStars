@@ -28,6 +28,8 @@ import { useSelector } from 'react-redux';
 import type { RootState } from "../context/redux/store";
 import { Activity, ActivityData, RestaurantActivityData } from '../context/userDataReducer';
 
+
+
 interface FoodActivity extends Activity {
   data: {
     foodName: string;
@@ -45,19 +47,21 @@ function MyFood() {
   const [showPicker, setShowPicker] = useState(false);
   const [message, setMessage] = useState("");
   const [foodList, setFoodList]=useState<Activity[]>([]);
-  
-  
-  // Use useSelector to access the Redux state
-  const activities = useSelector((state: RootState) => state.userData.data);
 
-  useEffect(() => {
-    console.log("activities",activities)
-    const tempFoodList = activities
-      .filter((a): a is FoodActivity => a.name === "restaurant")
-      .map(a => a as FoodActivity);
   
-    setFoodList(tempFoodList);
-  }, [activities]);
+  
+  const user = useSelector((state: RootState) => state.userData.user);
+  console.log("data",user);
+ 
+
+  // useEffect(() => {
+  //   console.log("activities",activities)
+  //   const tempFoodList = activities
+  //     .filter((a): a is FoodActivity => a.name === "restaurant")
+  //     .map(a => a as FoodActivity);
+  
+  //   setFoodList(tempFoodList);
+  // }, [activities]);
   
 
   function isRestaurantActivityData(data: ActivityData): data is RestaurantActivityData {

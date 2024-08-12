@@ -26,7 +26,6 @@ function TimeModal({ name }: Props) {
                         const value = e.detail.value;
                         if (typeof value === 'string') {
                             setSelectedTime(value);
-                            console.log(value)
                         }
                     }}
                     />

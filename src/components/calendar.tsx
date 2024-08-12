@@ -41,7 +41,6 @@ const Calendar: React.FC = () => {
     
     const [currentDate, setCurrentDate]= useState(new Date());
     const formated = format(currentDate, 'dd.MM.yyyy HH:mm');
-    console.log(formated)
     const [month, setMonth]=useState("");
     const [year, setYear]=useState(0);
     const [firstDayOfMonth, setFirstDayOfMonth]= useState<Date>(currentDate);
@@ -79,13 +78,11 @@ const Calendar: React.FC = () => {
         setCurrentDate(current => subMonths(current, 1));
     }
     const dayClick = (date: any) => {
-        debugger
         const selectedDate = typeof date === 'string' ? parse(date, 'yyyy-MM-dd', new Date()) : date;
     
         const day = getDay(selectedDate);
         const month = getMonth(selectedDate);
         const year = getYear(selectedDate);
-        console.log(selectedDate);
     
         // Filtering activities where their date matches the selected date
         const activitiesDay = userActivities.user.activities.filter(activity => {
@@ -101,7 +98,6 @@ const Calendar: React.FC = () => {
 
     const startIndex = startOfMonth(currentDate).getDay();
     useEffect(() => {
-        console.log(userActivities);
         setMonth(MonthInYear[currentDate.getMonth()]);
         setYear(currentDate.getFullYear());
         setFirstDayOfMonth(startOfMonth(currentDate));

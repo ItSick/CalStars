@@ -10,7 +10,7 @@ import store from "./context/redux/store";
 
 
 const container = document.getElementById('root');
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
 const root = createRoot(container!);
 root.render(
   <I18nextProvider i18n={i18n}>

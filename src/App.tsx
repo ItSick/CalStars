@@ -18,6 +18,9 @@ import Tab3 from './pages/Tab3';
 import Tab4 from './pages/Tab4';
 import Tab5 from './pages/Tab5';
 import { I18nContext, useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux'; 
+import { AppDispatch } from './context/redux/store'; 
+
 
 
 
@@ -44,14 +47,17 @@ import MyActivity from './pages/myActivity';
 import MyBeverage from './pages/myBeverage';
 import MyChat from './pages/myChat';
 import MyTarget from './pages/myTarget';
+import { getUserData } from './context/dataActions';
 
 setupIonicReact();
 
 function App() {
   const { i18n } = useContext(I18nContext);
   const { t } = useTranslation();
+  const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
+    setUserData()
     const setDirection = () => {
       document.documentElement.setAttribute(
         'dir', ['he', 'ar'].includes(i18n.language) ? 'rtl' : 'ltr');
@@ -65,6 +71,11 @@ function App() {
       i18n.off('languageChanged', setDirection);
     };
   }, [i18n]);
+
+
+  const setUserData = async () => {
+    await dispatch(getUserData())
+  }
 
   return (
   <IonApp>
