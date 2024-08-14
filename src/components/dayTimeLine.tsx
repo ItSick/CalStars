@@ -2,24 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './dayTimeLine.css';
 import ActivityRow from './activityRow'
-interface Data{
-    redStar:string;
-    yellowStar:string;
-    name:string;
-    time:string;
-}
-interface ActivityRowProps {
-    data: Data; // Use the Data interface defined above
-}
-    const DayTimeLine: React.FC<ActivityRowProps> = ({data}) => {
+import { useSelector } from 'react-redux';
+import type { RootState } from "../context/redux/store";
+import { Activity, ActivityData, RestaurantActivityData } from '../context/userDataReducer';
 
+
+
+
+interface ActivityRowProps {
+    activities: any; // Use the Data interface defined above
+}
+    const DayTimeLine: React.FC<ActivityRowProps> = ({activities}) => {
+
+        const user = useSelector((state: RootState) => state.userData.user);
         const { t } = useTranslation();
 
         return (
-            <div className='container-TL'>
-                <p>time line</p>
+            <div className='container-TL scrollable-container'>
                 <div style={{flex:"column"}}>
-                    <ActivityRow data={data} />
+                    <ActivityRow activities={activities} />
                 </div>
             </div>
         );

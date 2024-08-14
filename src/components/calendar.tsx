@@ -4,9 +4,12 @@ import './calendar.css';
 import { useTranslation } from 'react-i18next';
 import { chevronBack, chevronForward} from 'ionicons/icons';
 import { IonIcon } from '@ionic/react';
-import { addDays, addMonths, eachDayOfInterval, endOfMonth, format, startOfMonth, subMonths, getYear, getMonth,getDay, parse } from "date-fns";
+import { addDays, addMonths, eachDayOfInterval, endOfMonth, format, startOfMonth, subMonths, getYear, getMonth,getDay, parse, isSameDay } from "date-fns";
 //import { useSwipeable } from 'react-swipeable';
-import userActivities from '../stub/userActivities';
+import { useSelector } from 'react-redux';
+import type { RootState } from "../context/redux/store";
+import { Activity, ActivityData, RestaurantActivityData } from '../context/userDataReducer';
+
 
 
 
@@ -34,9 +37,15 @@ const MonthInYear = [
     "November",
     "December"
 ];
-const Calendar: React.FC = () => {
+
+interface CalendarProps {
+    setActivitiesPerDay: (activitiesPerDay: any[]) => void;
+}
+
+const Calendar: React.FC<CalendarProps> = ({setActivitiesPerDay}) => {
 
     const { t } = useTranslation();
+    const user = useSelector((state: RootState) => state.userData.user);
 
     
     const [currentDate, setCurrentDate]= useState(new Date());
@@ -46,7 +55,7 @@ const Calendar: React.FC = () => {
     const [firstDayOfMonth, setFirstDayOfMonth]= useState<Date>(currentDate);
     const [lastDayOfMonth, setLastDayOfMonth]= useState<Date>(currentDate);
     const [daysInMonth,setDaysInMonth]= useState<Date[]>([]);
-    const [activitiesPerDay, setActivitiesPerDay]=useState<any>([]);
+    
 
     
 
@@ -77,24 +86,20 @@ const Calendar: React.FC = () => {
     const oneMonthForward = () => {
         setCurrentDate(current => subMonths(current, 1));
     }
+    const parseDate = (dateString: any) => {
+        return parse(dateString, "d.M.yyyy HH:mm", new Date());
+    };
     const dayClick = (date: any) => {
-        const selectedDate = typeof date === 'string' ? parse(date, 'yyyy-MM-dd', new Date()) : date;
-    
-        const day = getDay(selectedDate);
-        const month = getMonth(selectedDate);
-        const year = getYear(selectedDate);
-    
-        // Filtering activities where their date matches the selected date
-        const activitiesDay = userActivities.user.activities.filter(activity => {
-            // Parse each activity date, handle empty dates by returning false
-            if (!activity.date) return false;
-            const activityDate = parse(activity.date, 'd.M.yyyy HH:mm', new Date());
-            return getDay(activityDate) === day && getMonth(activityDate) === month && getYear(activityDate) === year;
-        });
-    
-        // Update the state with the filtered activities
-        setActivitiesPerDay(activitiesDay);
+        if(user){
+            const activitiesDay = user.activities.filter(activity => {
+                const activityDate = parseDate(activity.date);
+                return isSameDay(activityDate, date);
+            });
+            setActivitiesPerDay(activitiesDay);
+        }   
     }
+
+        
 
     const startIndex = startOfMonth(currentDate).getDay();
     useEffect(() => {

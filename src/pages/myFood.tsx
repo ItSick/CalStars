@@ -51,17 +51,18 @@ function MyFood() {
   
   
   const user = useSelector((state: RootState) => state.userData.user);
-  console.log("data",user);
+  //console.log("user",user);
  
 
-  // useEffect(() => {
-  //   console.log("activities",activities)
-  //   const tempFoodList = activities
-  //     .filter((a): a is FoodActivity => a.name === "restaurant")
-  //     .map(a => a as FoodActivity);
-  
-  //   setFoodList(tempFoodList);
-  // }, [activities]);
+  useEffect(() => {
+
+    if (user){
+      const tempFoodList = user.activities.filter((a): a is FoodActivity => a.name === "restaurant")
+                                          .map(a => a as FoodActivity);
+      setFoodList(tempFoodList);
+    }
+    
+  }, [user]);
   
 
   function isRestaurantActivityData(data: ActivityData): data is RestaurantActivityData {

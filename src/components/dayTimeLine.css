@@ -4,6 +4,10 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 53%;
+    top: 63%;
     transform: translateY(-50%);
+}
+.scrollable-container {
+    height: 335px; /* Adjust this value based on your layout needs */
+    overflow-y: auto;
 }

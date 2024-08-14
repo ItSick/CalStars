@@ -7,15 +7,17 @@ import Calendar from '../components/calendar';
 import DayTimeLine from '../components/dayTimeLine';
 import Actions from '../components/actions';
 
-const data = {
-  name:"",
-  redStar:"",
-  yellowStar:"",
-  time:""
-}
+
 
 const Tab2: React.FC = () => {
+  
   const { t } = useTranslation();
+  const [activities, setActivities] = useState([]);
+
+  const setActivitiesPerDay = (activitiesPerDay: any) => {
+    setActivities(activitiesPerDay);
+  };
+
   return (
     <IonPage>
       <IonHeader>
@@ -29,9 +31,9 @@ const Tab2: React.FC = () => {
             <IonTitle size="large">{t("Calendar")}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <Calendar></Calendar>
+        <Calendar setActivitiesPerDay={setActivitiesPerDay}></Calendar>
         <Actions></Actions>
-        <DayTimeLine data={data}></DayTimeLine>
+        <DayTimeLine activities={activities}></DayTimeLine>
         </IonContent>
     </IonPage>
   );

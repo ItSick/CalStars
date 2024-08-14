@@ -79,7 +79,7 @@ const userDataReducer = (state = initialState, action: any): State => {
       };
 
     case GET_USER_DATA:
-      console.log('GET_USER_DATA action', action)
+      //console.log('GET_USER_DATA action', action)
       return {
         ...state,
         loading: true,
@@ -87,7 +87,7 @@ const userDataReducer = (state = initialState, action: any): State => {
       };
 
     case GET_USER_DATA_SUCCESS:
-      console.log('GET_USER_DATA_SUCCESS', action)
+      //console.log('GET_USER_DATA_SUCCESS', action)
       return {
         ...state,
         loading: false,
@@ -95,7 +95,7 @@ const userDataReducer = (state = initialState, action: any): State => {
       };
 
     case GET_USER_DATA_FAILURE:
-      console.error('GET_USER_DATA_SUCCESS', action)
+      //console.error('GET_USER_DATA_SUCCESS', action)
       return {
         ...state,
         loading: false,
