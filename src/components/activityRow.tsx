@@ -4,7 +4,7 @@ import './activityRow.css';
 import { format } from 'date-fns/format';
 import { parse } from 'date-fns/parse';
 import { IonCard, IonIcon } from '@ionic/react';
-import { sunny, star , starHalf } from 'ionicons/icons';
+import { sunny, star , starHalf,person, pint, chatbubbleEllipses, disc } from 'ionicons/icons';
 
 
 interface ActivityRowProps {
@@ -46,23 +46,23 @@ interface ActivityRowProps {
                                     <div className='stars-wrapper'>
                                         {activity.data.yellowStars? 
                                         <div className='yellow-stars'>
-                                            <IonIcon icon={star} />
+                                            <IonIcon style={{marginLeft:"2px"}} icon={star} />
                                             {activity.data.yellowStars}
                                         </div>
                                         :
                                         <div className='yellow-stars'>
-                                        <IonIcon icon={star} />
+                                        <IonIcon style={{marginLeft:"2px"}} icon={star} />
                                         {0}
                                     </div>
                                         }
                                         {activity.data.redStars? 
                                         <div className='red-stars'>
-                                            <IonIcon icon={star} />
+                                            <IonIcon style={{marginLeft:"2px"}} icon={star} />
                                             {activity.data.redStars }
                                         </div>
                                         :
                                         <div className='red-stars'>
-                                            <IonIcon icon={star} />
+                                            <IonIcon style={{marginLeft:"2px"}} icon={star} />
                                             {0}
                                         </div>
                                         }
@@ -75,16 +75,78 @@ interface ActivityRowProps {
                                 </React.Fragment>
                             )}
                             {activity.name === "sport" && (
-                                <div>{activity.data.name} {activity.data.time} </div>
+                                <React.Fragment>
+                                <div className='stars-wrapper'>
+                                    {activity.data.peopleNum? 
+                                    <div className='person'>
+                                        <IonIcon style={{marginLeft:"2px"}}  icon={person} />
+                                        {activity.data.peopleNum}
+                                    </div>
+                                    :
+                                    <div className='person'>
+                                    <IonIcon style={{marginLeft:"2px"}} icon={person} />
+                                    {0}
+                                </div>
+                                    }
+                                    
+                                </div>
+                                <div className='food-name-wrapper'>
+                                    <div></div>
+                                    <div className='food-name'>{activity.data.name} {activity.data.time} דקות</div>
+                                </div>
+                                
+                            </React.Fragment>
                             )}
                             {activity.name === "pint" && (
-                                <div>{activity.data.beverageName}  {activity.data.cups} </div>
+                                <React.Fragment>
+                                <div className='stars-wrapper'>
+                                    {activity.data.cups? 
+                                    <div className='pint-TL'>
+                                        <IonIcon style={{marginLeft:"2px"}}  icon={pint} />
+                                        {activity.data.cups}
+                                    </div>
+                                    :
+                                    <div className='pint-TL'>
+                                    <IonIcon style={{marginLeft:"2px"}} icon={pint} />
+                                    {0}
+                                </div>
+                                    }
+                                    
+                                </div>
+                                <div className='food-name-wrapper'>
+                                    <div></div>
+                                    <div className='food-name'>{activity.data.beverageName}</div>
+                                </div>
+                                
+                            </React.Fragment>
                             )}
                             {activity.name === "chat" && (
-                                <div>{activity.data.feeling}</div>
+                                <React.Fragment>
+                                <div className='stars-wrapper'>
+                                    <div className='chat-TL'>
+                                        <IonIcon style={{marginTop:"2px"}} icon={chatbubbleEllipses} />
+                                    </div> 
+                                </div>
+                                <div className='food-name-wrapper'>
+                                    <div></div>
+                                    <div className='food-name'>{activity.data.feeling}</div>
+                                </div>
+                                
+                            </React.Fragment>
                             )}
                             {activity.name === "target" && (
-                                <div>{activity.data.goal}</div>
+                                 <React.Fragment>
+                                 <div className='stars-wrapper'>
+                                     <div className='disc-TL'>
+                                         <IonIcon style={{marginTop:"2px"}} icon={disc} />
+                                     </div> 
+                                 </div>
+                                 <div className='food-name-wrapper'>
+                                     <div></div>
+                                     <div className='food-name'>{activity.data.goal}</div>
+                                 </div>
+                                 
+                             </React.Fragment>
                             )}
                         </div>
                     </IonCard>)} 

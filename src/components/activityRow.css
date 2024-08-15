@@ -1,5 +1,6 @@
 .ion-card-style{
     padding:1px 10px;
+    min-height: 60px;
 }
 .activity-row{
     display: flex; 
@@ -8,10 +9,10 @@
 }
 .time-wrapper{
     display: flex;
-    gap: 2; 
     flex-direction: column; 
     border-left: 3px solid #ebcc1e; 
     padding: 5px 5px 5px 30px;
+    height: 60px;
 }
 .time-icon {
     color: #ebcc1e;
@@ -20,31 +21,74 @@
     display: flex; 
     flex-direction: column; 
     margin-right: -25px;
+    margin-top: 5px;
 }
 .yellow-stars{
-    padding: 5px; 
+    padding: 3px; 
     color: #ebcc1e ;
     font-size: 14px; 
     border: 1px solid #ebcc1e; 
     border-radius: 10px 10px 0 0;
     background-color:white;
+    min-width: 48px;
 }
 .red-stars{
-    padding: 5px; 
+    padding: 3px; 
     color: red ;
     font-size: 14px; 
     border: 1px solid red; 
     border-radius: 0 0 10px 10px;
-    background-color: white
+    background-color: white;
+    min-width: 48px;
 }
 .food-name-wrapper{
     display: flex; 
-    gap: 2; 
     flex-direction: column;
-    padding: 8px
+    padding: 8px;
+    justify-content: center;
 }
 .food-name{
     font-size: 16px;
     color:black;
     font-weight: bold
+}
+.person{
+    padding: 3px; 
+    color: rgb(51, 177, 1);
+    font-size: 14px; 
+    border: 1px solid rgb(51, 177, 1);
+    border-radius: 10px;
+    background-color:white;
+    min-width: 48px;
+    margin-top: 12px;
+}
+.pint-TL{
+    padding: 3px; 
+    color: rgb(57, 70, 189);
+    font-size: 14px; 
+    border: 1px solid rgb(57, 70, 189);
+    border-radius: 10px;
+    background-color:white;
+    min-width: 48px;
+    margin-top: 12px;
+}
+.chat-TL{
+    padding-top: 3px; 
+    color: rgb(141, 144, 168);
+    font-size: 18px; 
+    border: 1px solid rgb(141, 144, 168);
+    border-radius: 10px;
+    background-color:white;
+    min-width: 48px;
+    margin-top: 10px;
+}
+.disc-TL{
+    padding-top: 3px; 
+    color: rgb(177, 97, 209);
+    font-size: 18px; 
+    border: 1px solid rgb(177, 97, 209);
+    border-radius: 10px;
+    background-color:white;
+    min-width: 48px;
+    margin-top: 10px;
 }

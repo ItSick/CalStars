@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { RefObject, useEffect, useState, useRef } from 'react';
 import './calendar.css';
 import { useTranslation } from 'react-i18next';
 import { chevronBack, chevronForward} from 'ionicons/icons';
@@ -55,7 +55,8 @@ const Calendar: React.FC<CalendarProps> = ({setActivitiesPerDay}) => {
     const [firstDayOfMonth, setFirstDayOfMonth]= useState<Date>(currentDate);
     const [lastDayOfMonth, setLastDayOfMonth]= useState<Date>(currentDate);
     const [daysInMonth,setDaysInMonth]= useState<Date[]>([]);
-    
+    const [activeDate, setActiveDate] = useState<Date | null>(null);
+    const [dayRefs, setDayRefs] = useState<RefObject<HTMLDivElement>[]>([]);
 
     
 
@@ -90,6 +91,7 @@ const Calendar: React.FC<CalendarProps> = ({setActivitiesPerDay}) => {
         return parse(dateString, "d.M.yyyy HH:mm", new Date());
     };
     const dayClick = (date: any) => {
+        setActiveDate(date)
         if(user){
             const activitiesDay = user.activities.filter(activity => {
                 const activityDate = parseDate(activity.date);
@@ -99,7 +101,11 @@ const Calendar: React.FC<CalendarProps> = ({setActivitiesPerDay}) => {
         }   
     }
 
-        
+    useEffect(() => {
+        // Create a ref for each day in the month
+        setDayRefs(daysInMonth.map(_ => React.createRef()));
+    }, [daysInMonth]);
+
 
     const startIndex = startOfMonth(currentDate).getDay();
     useEffect(() => {
@@ -109,9 +115,22 @@ const Calendar: React.FC<CalendarProps> = ({setActivitiesPerDay}) => {
         setLastDayOfMonth(endOfMonth(currentDate));
         const thisDaysInMonth = setDays();
         setDaysInMonth(thisDaysInMonth);
-       
-    }, [currentDate])
-   
+
+        dayClick(new Date());
+    }, [currentDate, user])
+
+    useEffect(() => {
+        const refIndex = activeDate ? activeDate.getDate() - 1 : -1;
+        if (refIndex >= 0 && refIndex < dayRefs.length && dayRefs[refIndex]?.current) {
+            dayRefs[refIndex].current!.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        }
+    }, [activeDate, dayRefs]);
+    
+    
+
     return (
         <div className='container-calendar'> 
             <div className='some-page-wrapper'>
@@ -129,7 +148,13 @@ const Calendar: React.FC<CalendarProps> = ({setActivitiesPerDay}) => {
                             {daysInMonth.map((date, i) => (<div key={i} className='column-day-name'>{daysInWeek[date.getDay()].hebNameShort}</div>))}
                         </div>
                         <div className='column'>
-                            {daysInMonth.map((date, i) => (<div key={i} onClick={() => dayClick(date)} className='column-day'>{date.getDate()}</div>))}
+                            {daysInMonth.map((date, i) => (
+                                <div    key={i} 
+                                        ref={dayRefs[i]}
+                                        onClick={() => dayClick(date)}  
+                                        className={`column-day ${activeDate && isSameDay(date, activeDate) ? 'active' : ''}`}>
+                                {date.getDate()}
+                                </div>))}
                         </div>
                     </div>
                 </div>

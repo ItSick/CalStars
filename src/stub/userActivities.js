@@ -39,7 +39,7 @@ const userActivities = {
                 "data": {
                     "name": "ריצה",
                     "time": 30,
-                    "peopleNum": "2"
+                    "peopleNum": "1"
                 }
             },
             {
